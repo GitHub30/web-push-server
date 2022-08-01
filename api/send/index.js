@@ -33,6 +33,7 @@ app.get('/api/send', async (req, res) => {
 
 app.post('/api/send', async (req, res) => {
   console.log(req.body)
+  // https://github.com/web-push-libs/web-push/blob/master/README.md#sendnotificationpushsubscription-payload-options
   res.json(await webpush.sendNotification(req.body.subscription, req.body.payload, req.body))
 })
 
