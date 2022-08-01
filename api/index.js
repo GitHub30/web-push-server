@@ -1,7 +1,7 @@
 const app = require('express')();
 const webpush = require('web-push');
 
-app.get('/api', (req, res) => {
+app.get('/api', async (req, res) => {
   // VAPID keys should be generated only once.
   const vapidKeys = {
     publicKey: 'BDd3_hVL9fZi9Ybo2UUzA284WG5FZR30_95YeZJsiA' +
@@ -26,7 +26,7 @@ app.get('/api', (req, res) => {
       }
     };
 
-  webpush.sendNotification(pushSubscription, '2Your Push Payload Text').then(data => console.log(JSON.stringify(data, null, 2)));
+  await webpush.sendNotification(pushSubscription, '2Your Push Payload Text').then(data => console.log(JSON.stringify(data, null, 2)));
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   res.end(`Hello!`);
