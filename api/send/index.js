@@ -31,7 +31,7 @@ app.get('/api/send', async (req, res) => {
   res.json(await webpush.sendNotification(pushSubscription, '2Your Push Payload Text'));
 })
 
-app.post('/api/send', function (req, res) {
+app.post('/api/send', async (req, res) => {
   console.log(req.body);
   res.send('Got a POST request: ' + typeof req.body)
 })
