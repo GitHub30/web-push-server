@@ -19,6 +19,7 @@ const send = o => {
 
 app.get('/api/send', async (req, res) => {
   if (req.query.json) res.json(await send(JSON.parse(req.query.json)))
+  else res.send()
 })
 
 app.post('/api/send', async (req, res) => {
