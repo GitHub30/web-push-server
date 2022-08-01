@@ -9,9 +9,10 @@ const defaultVapidDetails = {
   privateKey: 'xKZKYRNdFFn8iQIF2MH54KTfUHwH105zBdzMR7SI3xI',
 }
 
-app.get('/api/send/:name', async (req, res) => {
+app.get('/api/send', async (req, res) => {
   console.log(req)
   console.log(req.params)
+  console.log(req.query)
   res.send('Hello')
 })
 
