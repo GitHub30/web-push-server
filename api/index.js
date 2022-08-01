@@ -1,7 +1,7 @@
 const app = require('express')();
 const webpush = require('web-push');
 
-app.get('/api', async (req, res) => {
+app.get('/api/send', async (req, res) => {
   // VAPID keys should be generated only once.
   const vapidKeys = {
     publicKey: 'BDd3_hVL9fZi9Ybo2UUzA284WG5FZR30_95YeZJsiA' +
