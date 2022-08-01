@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 const app = express()
 app.use(express.json({ type: '*/*' }))
-const webpush = require('web-push')
+import webpush from 'web-push'
 
 const defaultVapidDetails = {
   subject: 'mailto:example@yourdomain.org',
@@ -26,4 +26,4 @@ app.post('/api/send', async (req, res) => {
   res.json(await send(req.body))
 })
 
-module.exports = app;
+export default app
