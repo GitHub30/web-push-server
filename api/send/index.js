@@ -10,9 +10,8 @@ const defaultVapidDetails = {
 }
 
 app.get('/api/send', async (req, res) => {
-  console.log(req)
-  console.log(req.params)
   console.log(req.query)
+  if (req.query.json) console.log(JSON.parse(req.query.json))
   res.send('Hello')
 })
 
