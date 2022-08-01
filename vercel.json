@@ -1,10 +1,3 @@
 {
-  "routes": [
-    {
-      // Specify which paths will route to a destination using a regex
-      "src": "/api/(.*)",
-      // Specify the paths' destination
-      "dest": "api/index.js"
-    }
-  ]
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
 }
