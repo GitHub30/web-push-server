@@ -32,8 +32,8 @@ app.get('/api/send', async (req, res) => {
 })
 
 app.post('/api/send', async (req, res) => {
-  console.log(req.body);
-  res.send('Got a POST request: ' + typeof req.body)
+  console.log(req.body)
+  res.json(await webpush.sendNotification(req.body.subscription, req.body.payload, req.body))
 })
 
 module.exports = app;
