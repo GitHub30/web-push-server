@@ -26,7 +26,7 @@ app.get('/api', (req, res) => {
       }
     };
 
-  webpush.sendNotification(pushSubscription, '2Your Push Payload Text');
+  webpush.sendNotification(pushSubscription, '2Your Push Payload Text').then(data => console.log(JSON.stringify(data, null, 2)));
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   res.end(`Hello!`);
