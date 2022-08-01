@@ -1,5 +1,7 @@
-const app = require('express')();
-const webpush = require('web-push');
+const express = require('express')
+const app = express()
+app.use(express.json())
+const webpush = require('web-push')
 
 app.get('/api/send', async (req, res) => {
   // VAPID keys should be generated only once.
@@ -27,6 +29,11 @@ app.get('/api/send', async (req, res) => {
     };
 
   res.json(await webpush.sendNotification(pushSubscription, '2Your Push Payload Text'));
-});
+})
+
+app.post('/api/send', function (req, res) {
+  console.log(req.body);
+  res.send('Got a POST request: ' + typeof req.body)
+})
 
 module.exports = app;
