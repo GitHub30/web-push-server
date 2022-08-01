@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-app.use(express.json({type: '*/*'}))
+app.use(express.json({ type: '*/*' }))
 const webpush = require('web-push')
 
 app.get('/api/send', async (req, res) => {
