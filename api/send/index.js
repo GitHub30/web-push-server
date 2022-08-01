@@ -9,20 +9,21 @@ const defaultVapidDetails = {
   privateKey: 'xKZKYRNdFFn8iQIF2MH54KTfUHwH105zBdzMR7SI3xI',
 }
 
+const send = o => {
+  const options = {
+    vapidDetails: o.vapidDetails || defaultVapidDetails
+  }
+  if (o.gcmAPIKey) options.gcmAPIKey = o.gcmAPIKey
+  return webpush.sendNotification(o.subscription, o.payload || 'Hello', options)
+}
+
 app.get('/api/send', async (req, res) => {
-  console.log(req.query)
-  if (req.query.json) console.log(JSON.parse(req.query.json))
+  if (req.query.json) res.json(await send(JSON.parse(req.query.json)))
   res.send('Hello')
 })
 
 app.post('/api/send', async (req, res) => {
-  console.log(req.body)
-  // https://github.com/web-push-libs/web-push/blob/master/README.md#sendnotificationpushsubscription-payload-options
-  const options = {
-    vapidDetails: req.body.vapidDetails || defaultVapidDetails
-  }
-  if (req.body.gcmAPIKey) options.gcmAPIKey = req.body.gcmAPIKey
-  res.json(await webpush.sendNotification(req.body.subscription, req.body.payload || 'Hello', options))
+  res.json(await send(req.body))
 })
 
 module.exports = app;
