@@ -26,10 +26,7 @@ app.get('/api/send', async (req, res) => {
       }
     };
 
-  await webpush.sendNotification(pushSubscription, '2Your Push Payload Text')
-  res.setHeader('Content-Type', 'text/html')
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
-  res.end(`Hello!`);
+  res.json(await webpush.sendNotification(pushSubscription, '2Your Push Payload Text'));
 });
 
 module.exports = app;
