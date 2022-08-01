@@ -62,4 +62,10 @@ app.post('/api/v3/sendpush', async function(request, res) {
 	}
 });
 
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+
 export default app;
