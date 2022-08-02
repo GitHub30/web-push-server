@@ -12,7 +12,7 @@ const defaultVapidDetails = {
   privateKey: 'xKZKYRNdFFn8iQIF2MH54KTfUHwH105zBdzMR7SI3xI',
 }
 
-const send = o => webpush.sendNotification(o.subscription, o.payload || 'Hello', {
+const send = o => webpush.sendNotification(o.subscription, JSON.stringify(o.payload || { title: 'Hello' }), {
   vapidDetails: o.vapidDetails || defaultVapidDetails
 })
 
