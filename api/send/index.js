@@ -13,7 +13,7 @@ const defaultVapidDetails = {
 }
 
 const send = o => webpush.sendNotification(o.subscription, JSON.stringify(o.payload || { title: 'Hello' }), {
-  vapidDetails: o.vapidDetails || defaultVapidDetails
+  vapidDetails: { ...defaultVapidDetails, ...o.vapidDetails }
 })
 
 app.get('/api/send', async (req, res) => {
