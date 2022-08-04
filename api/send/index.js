@@ -12,14 +12,10 @@ const defaultVapidDetails = {
   privateKey: 'xKZKYRNdFFn8iQIF2MH54KTfUHwH105zBdzMR7SI3xI',
 }
 
-// Default TTL is four weeks.
-// https://github.com/web-push-libs/web-push/blob/0c5c44c84c521ce23b0d75ab6bd5dc1fd7e7d6c5/src/web-push-lib.js#L12
-const DEFAULT_TTL = 2419200
-
 const send = o => webpush.sendNotification(o.subscription, JSON.stringify(o.payload || { title: 'Hello' }), {
   vapidDetails: { ...defaultVapidDetails, ...o.vapidDetails },
   headers: { Urgency: 'high' },
-  TTL: o.TTL || DEFAULT_TTL
+  TTL: 0
 })
 
 app.get('/api/send', async (req, res) => {
